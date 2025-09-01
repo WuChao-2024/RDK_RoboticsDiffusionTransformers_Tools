@@ -1,0 +1,7 @@
+torch 
+torchvision 
+diffusers 
+numpy==1.26.4 
+opencv-python==4.10.0.82 
+onnxruntime
+flask
