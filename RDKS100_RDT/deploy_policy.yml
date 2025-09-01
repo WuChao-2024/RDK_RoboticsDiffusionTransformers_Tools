@@ -1,0 +1,7 @@
+# Basic experiment configuration (keep unchanged)
+policy_name: RDKS100_RDT
+task_name: null
+task_config: null
+ckpt_setting: null
+seed: null
+instruction_type: unseen
