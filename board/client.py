@@ -12,25 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-import numpy as np
-import time
-import cv2
 import os
 from server_client import Client
 from BPU_RDT_Policy import *
 import yaml
 import argparse
 
-logging.basicConfig(
-    level = logging.DEBUG,
-    format = '[%(name)s] [%(asctime)s.%(msecs)03d] [%(levelname)s] %(message)s',
-    datefmt='%H:%M:%S')
-logger = logging.getLogger("RDK_RDT")
-
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--opt.bpu_rdt_path', type=str, default='./BPU_RDT_Policy/', help='') 
+    parser.add_argument('--bpu_rdt_path', type=str, default='./BPU_RDT_Policy/', help='') 
     # example: $ tree BPU_RDT_Policy
     # .
     # |-- base.yaml
@@ -41,22 +31,24 @@ def main():
     # |-- rdt_state_adaptor_1x1x256.onnx
     # `-- rdt_state_adaptor_1x64x256.onnx
     parser.add_argument('--host', type=str, default='10.112.20.37', help='')
-    parser.add_argument('--port', type=int, default=50022, help='')
+    parser.add_argument('--port', type=int, default=50023, help='')
     parser.add_argument('--ctrl_freq', type=int, default=25, help="")
     parser.add_argument('--left_arm_dim', type=int, default=6, help="")
     parser.add_argument('--right_arm_dim', type=int, default=6, help="")
     opt = parser.parse_args()
 
-    client = Client(host=opt.host, port=opt.port)  
 
     with open(os.path.join(opt.bpu_rdt_path, "base.yaml"), "r") as fp:
         config_base_yaml = yaml.safe_load(fp)
     config_base_yaml["arm_dim"] = {"left_arm_dim": opt.left_arm_dim, "right_arm_dim": opt.right_arm_dim}
     config_base_yaml['ctrl_freq'] = opt.ctrl_freq
 
-    bpu_model = BPU_RDT_Policy(opt.bpu_rdt_path, config_base_yaml)
+    # bpu_model = BPU_RDT_Policy(opt.bpu_rdt_path, config_base_yaml)
+    bpu_model = BPU_RDT_Policy(opt.bpu_rdt_path, config_base_yaml, SERVER_URL = 'http://10.64.60.208:5000/process')
 
     logger.info("BPU RDT model initialized")
+
+    client = Client(host=opt.host, port=opt.port)  
 
 
     while True:
@@ -70,6 +62,7 @@ def main():
                 none_cnt += 1
                 if none_cnt > 50:
                     client.close()
+                    del client
                     client = Client(host=opt.host, port=opt.port)  
                     break
             else:
