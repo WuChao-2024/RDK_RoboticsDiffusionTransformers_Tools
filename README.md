@@ -1,7 +1,5 @@
 English | [简体中文](./README_cn.md)
 
-[English](./README.md) | 简体中文
-
 ```
 GitHub: https://github.com/WuChao-2024/RDK_RoboticsDiffusionTransformers_Tools
 FeiShu Document: https://horizonrobotics.feishu.cn/docx/IRVLdawAUoUAoUxNJv7cGlM4nHg
