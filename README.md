@@ -3,7 +3,7 @@ English | [简体中文](./README_cn.md)
 ```
 GitHub: https://github.com/WuChao-2024/RDK_RoboticsDiffusionTransformers_Tools
 FeiShu Document: https://horizonrobotics.feishu.cn/docx/IRVLdawAUoUAoUxNJv7cGlM4nHg
-D-Robotics Developer Community NodeHub CN: 
+D-Robotics Developer Community NodeHub CN: https://developer.d-robotics.cc/nodehubdetail/1965697124948938753
 D-Robotics Developer Community NodeHub EN: 
 ```
 ```
