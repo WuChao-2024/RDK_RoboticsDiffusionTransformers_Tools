@@ -296,7 +296,6 @@ compiler_parameters:
     debug: True
     advice: 1
     optimize_level: 'O2'
-    core_num: 2
     '''
 
     with open(os.path.join(opt.export_path, img_adaptor_ws_name, img_adaptor_config_name), "w", encoding="utf-8") as f:
