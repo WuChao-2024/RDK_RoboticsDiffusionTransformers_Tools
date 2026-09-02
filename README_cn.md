@@ -4,8 +4,6 @@
 ```
 GitHub: https://github.com/WuChao-2024/RDK_RoboticsDiffusionTransformers_Tools
 FeiShu Document: https://horizonrobotics.feishu.cn/docx/IRVLdawAUoUAoUxNJv7cGlM4nHg
-D-Robotics Developer Community NodeHub CN: 
-D-Robotics Developer Community NodeHub EN: 
 ```
 ```
 Contributors: 
